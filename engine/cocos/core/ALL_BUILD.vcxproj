@@ -108,7 +108,7 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\CMakeLists.txt">
+    <CustomBuild Include="X:\install_test\cocos2d\cocos\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/gsimoes/Documents/Projet/install_test/cocos2d/cocos/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
@@ -120,8 +120,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\2d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\3d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\audio\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\base\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\math\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\navmesh\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\network\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\physics\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\physics3d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\platform\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\renderer\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\ui\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">X:\install_test\cocos2d\cocos\2d\CMakeLists.txt;X:\install_test\cocos2d\cocos\3d\CMakeLists.txt;X:\install_test\cocos2d\cocos\audio\CMakeLists.txt;X:\install_test\cocos2d\cocos\base\CMakeLists.txt;X:\install_test\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;X:\install_test\cocos2d\cocos\math\CMakeLists.txt;X:\install_test\cocos2d\cocos\navmesh\CMakeLists.txt;X:\install_test\cocos2d\cocos\network\CMakeLists.txt;X:\install_test\cocos2d\cocos\physics\CMakeLists.txt;X:\install_test\cocos2d\cocos\physics3d\CMakeLists.txt;X:\install_test\cocos2d\cocos\platform\CMakeLists.txt;X:\install_test\cocos2d\cocos\renderer\CMakeLists.txt;X:\install_test\cocos2d\cocos\ui\CMakeLists.txt;X:\install_test\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">X:\install_test\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/gsimoes/Documents/Projet/install_test/cocos2d/cocos/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
@@ -133,8 +133,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\2d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\3d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\audio\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\base\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\math\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\navmesh\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\network\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\physics\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\physics3d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\platform\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\renderer\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\ui\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">X:\install_test\cocos2d\cocos\2d\CMakeLists.txt;X:\install_test\cocos2d\cocos\3d\CMakeLists.txt;X:\install_test\cocos2d\cocos\audio\CMakeLists.txt;X:\install_test\cocos2d\cocos\base\CMakeLists.txt;X:\install_test\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;X:\install_test\cocos2d\cocos\math\CMakeLists.txt;X:\install_test\cocos2d\cocos\navmesh\CMakeLists.txt;X:\install_test\cocos2d\cocos\network\CMakeLists.txt;X:\install_test\cocos2d\cocos\physics\CMakeLists.txt;X:\install_test\cocos2d\cocos\physics3d\CMakeLists.txt;X:\install_test\cocos2d\cocos\platform\CMakeLists.txt;X:\install_test\cocos2d\cocos\renderer\CMakeLists.txt;X:\install_test\cocos2d\cocos\ui\CMakeLists.txt;X:\install_test\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">X:\install_test\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/gsimoes/Documents/Projet/install_test/cocos2d/cocos/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
@@ -146,8 +146,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\2d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\3d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\audio\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\base\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\math\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\navmesh\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\network\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\physics\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\physics3d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\platform\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\renderer\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\ui\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">X:\install_test\cocos2d\cocos\2d\CMakeLists.txt;X:\install_test\cocos2d\cocos\3d\CMakeLists.txt;X:\install_test\cocos2d\cocos\audio\CMakeLists.txt;X:\install_test\cocos2d\cocos\base\CMakeLists.txt;X:\install_test\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;X:\install_test\cocos2d\cocos\math\CMakeLists.txt;X:\install_test\cocos2d\cocos\navmesh\CMakeLists.txt;X:\install_test\cocos2d\cocos\network\CMakeLists.txt;X:\install_test\cocos2d\cocos\physics\CMakeLists.txt;X:\install_test\cocos2d\cocos\physics3d\CMakeLists.txt;X:\install_test\cocos2d\cocos\platform\CMakeLists.txt;X:\install_test\cocos2d\cocos\renderer\CMakeLists.txt;X:\install_test\cocos2d\cocos\ui\CMakeLists.txt;X:\install_test\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">X:\install_test\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/gsimoes/Documents/Projet/install_test/cocos2d/cocos/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
@@ -159,65 +159,65 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\2d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\3d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\audio\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\base\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\math\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\navmesh\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\network\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\physics\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\physics3d\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\platform\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\renderer\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\ui\CMakeLists.txt;C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">X:\install_test\cocos2d\cocos\2d\CMakeLists.txt;X:\install_test\cocos2d\cocos\3d\CMakeLists.txt;X:\install_test\cocos2d\cocos\audio\CMakeLists.txt;X:\install_test\cocos2d\cocos\base\CMakeLists.txt;X:\install_test\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;X:\install_test\cocos2d\cocos\math\CMakeLists.txt;X:\install_test\cocos2d\cocos\navmesh\CMakeLists.txt;X:\install_test\cocos2d\cocos\network\CMakeLists.txt;X:\install_test\cocos2d\cocos\physics\CMakeLists.txt;X:\install_test\cocos2d\cocos\physics3d\CMakeLists.txt;X:\install_test\cocos2d\cocos\platform\CMakeLists.txt;X:\install_test\cocos2d\cocos\renderer\CMakeLists.txt;X:\install_test\cocos2d\cocos\ui\CMakeLists.txt;X:\install_test\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">X:\install_test\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\ZERO_CHECK.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\ZERO_CHECK.vcxproj">
       <Project>{82302859-F491-3FE6-BBAC-ABD628200F22}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\cocos\core\cocos2d.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\cocos\core\cocos2d.vcxproj">
       <Project>{3094FBA0-DF4D-3D5C-A4EB-416C51F6239C}</Project>
       <Name>cocos2d</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\clipper\ext_clipper.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\clipper\ext_clipper.vcxproj">
       <Project>{C0A5E287-8FD5-3F7F-82B6-8CCB3EDAA4E0}</Project>
       <Name>ext_clipper</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\ConvertUTF\ext_convertUTF.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\ConvertUTF\ext_convertUTF.vcxproj">
       <Project>{5FF4080C-2D58-3C87-81D4-382BF41472CE}</Project>
       <Name>ext_convertUTF</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\edtaa3func\ext_edtaa3func.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\edtaa3func\ext_edtaa3func.vcxproj">
       <Project>{0F98207F-C93B-3EE0-AF72-B5F192ADA862}</Project>
       <Name>ext_edtaa3func</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\md5\ext_md5.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\md5\ext_md5.vcxproj">
       <Project>{2A49528B-B553-325D-93E7-7C395FAB2EE4}</Project>
       <Name>ext_md5</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\poly2tri\ext_poly2tri.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\poly2tri\ext_poly2tri.vcxproj">
       <Project>{D43352F3-0D87-3586-AC95-3BDA078B79A3}</Project>
       <Name>ext_poly2tri</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\recast\ext_recast.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\recast\ext_recast.vcxproj">
       <Project>{A0ECCED2-9B99-3DB5-B0FF-3BA4675F3EAA}</Project>
       <Name>ext_recast</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\tinyxml2\ext_tinyxml2.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\tinyxml2\ext_tinyxml2.vcxproj">
       <Project>{1D663B71-6AC5-3936-89EF-D7E8C9FA98C3}</Project>
       <Name>ext_tinyxml2</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\unzip\ext_unzip.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\unzip\ext_unzip.vcxproj">
       <Project>{92EA61F9-E1F5-32AD-A573-0FB717790FF3}</Project>
       <Name>ext_unzip</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\xxhash\ext_xxhash.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\xxhash\ext_xxhash.vcxproj">
       <Project>{07613B45-C8FF-36E6-A345-CE82469DC461}</Project>
       <Name>ext_xxhash</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\xxtea\ext_xxtea.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\xxtea\ext_xxtea.vcxproj">
       <Project>{F1ED7BCA-860B-3CC0-91FA-C0C2B9A06C12}</Project>
       <Name>ext_xxtea</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\engine\external\external.vcxproj">
+    <ProjectReference Include="X:\install_test\proj.win32\engine\external\external.vcxproj">
       <Project>{AAA55252-CEE2-312D-A092-E66537D399AF}</Project>
       <Name>external</Name>
     </ProjectReference>

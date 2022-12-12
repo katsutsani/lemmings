@@ -1,56 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\gsimoes\Documents\Projet\install_test\Classes\AppDelegate.cpp">
+    <ClCompile Include="X:\install_test\Classes\AppDelegate.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\gsimoes\Documents\Projet\install_test\Classes\HelloWorldScene.cpp">
+    <ClCompile Include="X:\install_test\Classes\HelloWorldScene.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\main.cpp">
+    <ClCompile Include="X:\install_test\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\gsimoes\Documents\Projet\install_test\cocos2d\cocos\precheader.cpp">
+    <ClCompile Include="X:\install_test\cocos2d\cocos\precheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\Classes\AppDelegate.h">
+    <ClInclude Include="X:\install_test\Classes\AppDelegate.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\Classes\HelloWorldScene.h">
+    <ClInclude Include="X:\install_test\Classes\HelloWorldScene.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\main.h">
+    <ClInclude Include="X:\install_test\proj.win32\main.h">
       <Filter>Source Files\proj.win32</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\resource.h">
+    <ClInclude Include="X:\install_test\proj.win32\resource.h">
       <Filter>Source Files\proj.win32</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\Resources\CloseNormal.png">
+    <ClInclude Include="X:\install_test\Resources\CloseNormal.png">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\Resources\CloseSelected.png">
+    <ClInclude Include="X:\install_test\Resources\CloseSelected.png">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\Resources\HelloWorld.png">
+    <ClInclude Include="X:\install_test\Resources\HelloWorld.png">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\Resources\fonts\Marker Felt.ttf">
+    <ClInclude Include="X:\install_test\Resources\fonts\Marker Felt.ttf">
       <Filter>Resources\fonts</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\Resources\fonts\arial.ttf">
+    <ClInclude Include="X:\install_test\Resources\fonts\arial.ttf">
       <Filter>Resources\fonts</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\gsimoes\Documents\Projet\install_test\Resources\res\.gitkeep">
+    <ClInclude Include="X:\install_test\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\gsimoes\Documents\Projet\install_test\CMakeLists.txt" />
+    <CustomBuild Include="X:\install_test\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="C:\Users\gsimoes\Documents\Projet\install_test\proj.win32\game.rc">
+    <ResourceCompile Include="X:\install_test\proj.win32\game.rc">
       <Filter>Source Files\proj.win32</Filter>
     </ResourceCompile>
   </ItemGroup>
