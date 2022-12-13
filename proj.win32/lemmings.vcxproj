@@ -117,7 +117,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>												</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different X:/lemmings/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll X:/lemmings/proj.win32/bin/lemmings/Debug/libssl-1_1.dll
 if %errorlevel% neq 0 goto :cmEnd
@@ -283,7 +284,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>												</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different X:/lemmings/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll X:/lemmings/proj.win32/bin/lemmings/Release/libssl-1_1.dll
 if %errorlevel% neq 0 goto :cmEnd
@@ -449,7 +451,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>												</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different X:/lemmings/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll X:/lemmings/proj.win32/bin/lemmings/MinSizeRel/libssl-1_1.dll
 if %errorlevel% neq 0 goto :cmEnd
@@ -614,7 +617,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>												</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different X:/lemmings/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll X:/lemmings/proj.win32/bin/lemmings/RelWithDebInfo/libssl-1_1.dll
 if %errorlevel% neq 0 goto :cmEnd
@@ -805,10 +809,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="X:\lemmings\Classes\AppDelegate.h" />
     <ClInclude Include="X:\lemmings\Classes\HelloWorldScene.h" />
     <ClInclude Include="X:\lemmings\proj.win32\main.h" />
     <ClInclude Include="X:\lemmings\proj.win32\resource.h" />
+    <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="X:\lemmings\Classes\AppDelegate.cpp" />
     <ClCompile Include="X:\lemmings\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="X:\lemmings\proj.win32\main.cpp" />
@@ -882,6 +888,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{007164B6-D14C-3C3A-B517-004DC475A55F}</Project>
       <Name>external</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\test.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
