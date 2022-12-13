@@ -1,3 +1,4 @@
+
 /****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
@@ -22,25 +23,17 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __GAME_SCENE_H__
-#define __GAME_SCENE_H__
+#ifndef __KEYBOARD_TEST_H__
+#define __KEYBOARD_TEST_H__
 
 #include "cocos2d.h"
-#include "CCEventKeyboard.h"
-
 
 class GameScene : public cocos2d::Scene
 {
 public:
-    int Moove;
-    cocos2d::Sprite* Sprite1;
     static cocos2d::Scene* createScene();
 
     virtual bool init();
-
-    void Mooving();
-    void keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-    void keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
     // a selector callback
     void menuChange(cocos2d::Ref* pSender);
@@ -49,4 +42,4 @@ public:
     CREATE_FUNC(GameScene);
 };
 
-#endif //  __GAME_SCENE_H__
+#endif //  __KEYBOARD_TEST_H__

@@ -26,7 +26,6 @@
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
-
 Scene* GameScene::createScene()
 {
     // create the scene with physics enabled
@@ -44,13 +43,44 @@ Scene* GameScene::createScene()
     return scene;
 }
 
+void GameScene::keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+{
+    if (keyCode == EventKeyboard::KeyCode::KEY_SPACE) {
+        log("keycode", keyCode);
+        auto moveBy = MoveBy::create(1, Vec2(0, 500));
+
+        this->Sprite1->runAction(moveBy);
+    }
+    if (keyCode == EventKeyboard::KeyCode::KEY_RIGHT_ARROW) {
+        Moove = 1;
+        log("moove %d", Moove);
+        
+    }
+    if (keyCode == EventKeyboard::KeyCode::KEY_LEFT_ARROW) {
+        Moove = -1;
+        log("moove %d", Moove);
+        
+    }
+}
+
+void GameScene::Mooving() {
+    
+}
+
+
+void GameScene::keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+{
+    if (keyCode == EventKeyboard::KeyCode::KEY_RIGHT_ARROW || keyCode == EventKeyboard::KeyCode::KEY_LEFT_ARROW) {
+        Moove = 0;
+    }
+}
+
 // Print useful error message instead of segfaulting when files are not there.
 static void problemLoading(const char* filename)
 {
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
-
 // on "init" you need to initialize your instance
 bool GameScene::init()
 {
@@ -61,10 +91,16 @@ bool GameScene::init()
         return false;
     }
 
+    auto listener = EventListenerKeyboard::create();
+    listener->onKeyPressed = CC_CALLBACK_2(GameScene::keyPressed, this);
+    listener->onKeyReleased = CC_CALLBACK_2(GameScene::keyReleased, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
+
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 5);
+    PhysicsMaterial material(1.0f, 0.0f, 0.0f);
+    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, material, 5);
     auto edgeNode = Node::create();
     edgeNode->setPosition(Point(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
     edgeNode->setPhysicsBody(edgeBody);
@@ -100,12 +136,26 @@ bool GameScene::init()
         // position the sprite on the center of the screen
         
         Sprite1->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-        auto physicsBody = PhysicsBody::createBox(Size(Sprite1->getBoundingBox().size.width, Sprite1->getBoundingBox().size.height), PhysicsMaterial(0.1f, 1.0f, 0.0f));
+
+        auto physicsBody = PhysicsBody::createBox(Size(Sprite1->getBoundingBox().size.width, Sprite1->getBoundingBox().size.height), PhysicsMaterial(0.1f, 0.0f, 0.0f));
         physicsBody->setDynamic(true);
         Sprite1->addComponent(physicsBody);
+        this->Sprite1 = Sprite1;
+        if (Moove == 1) {
+            log("droite");
+            auto moveBy = MoveBy::create(1, Vec2(500, 0));
+
+            this->Sprite1->runAction(moveBy);
+        }
+        else if (Moove == -1) {
+            log("gauche");
+            auto moveBy = MoveBy::create(1, Vec2(-500, 0));
+
+            this->Sprite1->runAction(moveBy);
+        }
 
         // add the sprite as a child to this layer
-        this->addChild(Sprite1, 0);
+        this->addChild(this->Sprite1, 0);
     }
 
     return true;
