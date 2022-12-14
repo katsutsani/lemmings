@@ -16,7 +16,10 @@
     <ClCompile Include="..\Classes\GameScene.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="KeyboardTest.cpp">
+    <ClCompile Include="..\Classes\Entity.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLayer.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -54,7 +57,10 @@
     <ClInclude Include="..\Classes\GameScene.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="KeyboardTest.h">
+    <ClInclude Include="..\Classes\Entity.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLayer.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
   </ItemGroup>

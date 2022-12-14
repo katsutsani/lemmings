@@ -1,3 +1,4 @@
+#pragma once
 /****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
@@ -22,18 +23,28 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __GAME_SCENE_H__
-#define __GAME_SCENE_H__
+#ifndef __GAME_LAYER_H__
+#define __GAME_LAYER_H__
 
 #include "cocos2d.h"
+#include "CCEventKeyboard.h"
+#include "Entity.h"
 
-class GameScene : public cocos2d::Scene
+class GameLayer : public cocos2d::Layer
 {
 public:
-    static cocos2d::Scene* createScene();
+    int Move = 1;
+
+    virtual bool init() override;
+    std::vector<cocos2d::Sprite*> Lemmings;
+    void update(float) override;
+    void keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+    void keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
     // implement the "static create()" method manually
-    CREATE_FUNC(GameScene);
+    CREATE_FUNC(GameLayer);
+
+    void menuChange(cocos2d::Ref* pSender);
 };
 
-#endif //  __GAME_SCENE_H__
+#endif //  __GAME_LAYER_H__

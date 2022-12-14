@@ -23,23 +23,22 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __KEYBOARD_TEST_H__
-#define __KEYBOARD_TEST_H__
+#ifndef __ENTITY_H__
+#define __ENTITY_H__
 
 #include "cocos2d.h"
+#include <vector>
+#include "GameScene.h"
 
-class GameScene : public cocos2d::Scene
+class Entity : public cocos2d::Sprite, public cocos2d::Scene
 {
 public:
-    static cocos2d::Scene* createScene();
+    std::vector<Sprite*> Lemmings;
+    Sprite* Sprite1;
 
-    virtual bool init();
+    Entity(int);
+    ~Entity();
 
-    // a selector callback
-    void menuChange(cocos2d::Ref* pSender);
-
-    // implement the "static create()" method manually
-    CREATE_FUNC(GameScene);
 };
 
-#endif //  __KEYBOARD_TEST_H__
+#endif //  __ENTITY_H__
