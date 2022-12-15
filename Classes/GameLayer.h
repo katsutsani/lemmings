@@ -29,6 +29,7 @@
 #include "cocos2d.h"
 #include "CCEventKeyboard.h"
 #include "Entity.h"
+#include "physics/CCPhysicsContact.h"
 
 class GameLayer : public cocos2d::Layer
 {
@@ -45,6 +46,7 @@ public:
     CREATE_FUNC(GameLayer);
 
     void menuChange(cocos2d::Ref* pSender);
+    bool onContactBegin(cocos2d::PhysicsContact& contact);
 };
 
 #endif //  __GAME_LAYER_H__
