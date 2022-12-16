@@ -52,16 +52,17 @@ USING_NS_CC;
 // Update Function
 
 void GameLayer::update(float delta) {
+	
 	if (this->Move == 1) {
 		auto moveBy = MoveBy::create(1, Vec2(1, 0));
 		for (int i = 0; i < this->Lemmings.size(); i++) {
 
-			
+
 			/*if (this->Lemmings[i]->getBoundingBox().getMaxX() == this->Border->getBoundingBox().getMinX()) {
 				log("collide if move 1");
 				this->Move = -1;
 			}*/
-				
+
 			if (i == 0) {
 				this->Lemmings[i]->runAction(moveBy);
 
@@ -80,7 +81,7 @@ void GameLayer::update(float delta) {
 				log("collide if move -1");
 				this->Move = 1;
 			}*/
-				
+
 			if (i == 0) {
 				this->Lemmings[i]->runAction(moveBy);
 			}
@@ -98,29 +99,16 @@ void GameLayer::update(float delta) {
 
 bool GameLayer::onContactBegin(cocos2d::PhysicsContact& contact) {
 
-	auto shapeA = contact.getShapeA()->getBody();
-	auto shapeB = contact.getShapeB()->getBody();
-
-
-	if (shapeA->getNode() && shapeB->getNode())
+	auto nodeA = contact.getShapeA()->getBody()->getNode();
+	auto nodeB = contact.getShapeB()->getBody()->getNode();
+	if (nodeA && nodeB)
 	{
-
-		if (shapeA->getNode()->getTag() == 2) {
-			this->changeMoveDirection();
-			return true;
-		}
-		else if (shapeA->getNode()->getTag() == 2) {
-			this->changeMoveDirection();
-			return true;
-		}
-		else {
-			return false;
-		}
-		
+		log("%d, %d",nodeA->getTag(), nodeB->getTag());
 	}
-	
-	
+	return false;
 }
+
+
 
 void GameLayer::changeMoveDirection() {
 	if (this->Move == 1) {
@@ -163,10 +151,7 @@ bool GameLayer::init()
 	//listener->onKeyReleased = CC_CALLBACK_2(GameLayer::keyReleased, this);
 	//_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
-	// Contact Listener
-	auto contactListener = EventListenerPhysicsContact::create();
-	contactListener->onContactBegin = CC_CALLBACK_1(GameLayer::onContactBegin, this);
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
+
 
 
 
@@ -187,19 +172,20 @@ bool GameLayer::init()
 
 	//this->Border = edgeNode;
 
-	auto RightBorderBody = PhysicsBody::createEdgeBox(Size(5,visibleSize.height), material, 5);
-	auto RightBorderNode = Node::create();
+	auto RightBorderBody = PhysicsBody::createEdgeBox(Size(5, visibleSize.height), material, 5);
+	auto RightBorderNode = Sprite::create();
 	RightBorderNode->setPosition(Point(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
-	RightBorderBody->setContactTestBitmask(0xFFFFFFFF);
-	RightBorderBody->setTag(2);
 	RightBorderNode->setPhysicsBody(RightBorderBody);
-	this->addChild(RightBorderNode);
+	this->addChild(RightBorderNode, 0);
+	RightBorderBody->setTag(3);
+	RightBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
 	
-	
+
+
 
 	auto GroundBorderBody = PhysicsBody::createEdgeBox(Size(visibleSize.width, 1), material, 5);
 	auto GroundBorderNode = Node::create();
-	GroundBorderNode->setPosition(Point(origin.x + visibleSize.width/2, origin.y ));
+	GroundBorderNode->setPosition(Point(origin.x + visibleSize.width / 2, origin.y));
 	GroundBorderNode->setPhysicsBody(GroundBorderBody);
 	this->addChild(GroundBorderNode);
 	GroundBorderNode->getPhysicsBody()->setCategoryBitmask(0x03);    // 0011
@@ -208,12 +194,11 @@ bool GameLayer::init()
 	auto LeftBorderBody = PhysicsBody::createEdgeBox(Size(1, visibleSize.height), material, 5);
 	auto LeftBorderNode = Node::create();
 	LeftBorderNode->setPosition(Point(origin.x, origin.y + visibleSize.height / 2));
-	LeftBorderBody->setContactTestBitmask(0xFFFFFFFF);
-	LeftBorderBody->setTag(2);
 	LeftBorderNode->setPhysicsBody(LeftBorderBody);
-	this->addChild(LeftBorderNode);
-	LeftBorderNode->getPhysicsBody()->setCategoryBitmask(0x03);    // 0011
-	LeftBorderNode->getPhysicsBody()->setCollisionBitmask(0x03);   // 0011
+	this->addChild(LeftBorderNode, 0);
+	LeftBorderBody->setTag(3);
+	LeftBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
+	
 
 	//auto UpperBorderBody = PhysicsBody::createEdgeBox(Size(visibleSize.width, 1), material, 5);
 	//auto UpperBorderNode = Node::create();
@@ -245,17 +230,23 @@ bool GameLayer::init()
 
 
 	// Lemmings and their Physics Body
-	Entity lemmings(3);
+
+	Entity lemmings(2);
 	for (auto i = 0; i < lemmings.Lemmings.size(); i++) {
 		auto physicsBody = PhysicsBody::createBox(Size(lemmings.Lemmings[i]->getContentSize().width, lemmings.Lemmings[i]->getContentSize().height), PhysicsMaterial(0.1f, 0.0f, 0.0f));
 		physicsBody->setDynamic(true);
 		lemmings.Lemmings[i]->addComponent(physicsBody);
-		this->addChild(lemmings.Lemmings[i], i);
-		lemmings.Lemmings[i]->setPosition(Vec2(visibleSize.width / 2 + origin.x+ (i*300), visibleSize.height / 2 + origin.y));
+		this->addChild(lemmings.Lemmings[i], 0);
 		lemmings.Lemmings[i]->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
-		lemmings.Lemmings[i]->setTag(1);
+		lemmings.Lemmings[i]->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2 + Director::getInstance()->getVisibleOrigin().x + (i * 300), Director::getInstance()->getVisibleSize().height / 2 + Director::getInstance()->getVisibleOrigin().y));
 	}
 	Lemmings = lemmings.Lemmings;
+
+	// Contact Listener
+	auto contactListener = EventListenerPhysicsContact::create();
+	contactListener->onContactBegin = CC_CALLBACK_1(GameLayer::onContactBegin, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
+
 	this->scheduleUpdate();
 
 	return true;
