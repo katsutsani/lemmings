@@ -34,7 +34,7 @@
 class GameLayer : public cocos2d::Layer
 {
 public:
-    int Move = 1;
+    int Move;
 
     virtual bool init() override;
     std::vector<cocos2d::Sprite*> Lemmings;
@@ -44,6 +44,9 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(GameLayer);
+    void GameLayer::changeMoveDirection();
+    Node* Border;
+    Node* RightBorder;
 
     void menuChange(cocos2d::Ref* pSender);
     bool onContactBegin(cocos2d::PhysicsContact& contact);

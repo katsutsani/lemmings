@@ -55,11 +55,20 @@ void GameLayer::update(float delta) {
 	if (this->Move == 1) {
 		auto moveBy = MoveBy::create(1, Vec2(1, 0));
 		for (int i = 0; i < this->Lemmings.size(); i++) {
+
+			
+			/*if (this->Lemmings[i]->getBoundingBox().getMaxX() == this->Border->getBoundingBox().getMinX()) {
+				log("collide if move 1");
+				this->Move = -1;
+			}*/
+				
 			if (i == 0) {
 				this->Lemmings[i]->runAction(moveBy);
+
 			}
 			else {
 				this->Lemmings[i]->runAction(moveBy->clone());
+
 			}
 
 		}
@@ -67,11 +76,17 @@ void GameLayer::update(float delta) {
 	else if (this->Move == -1) {
 		auto moveBy = MoveBy::create(1, Vec2(-1, 0));
 		for (int i = 0; i < this->Lemmings.size(); i++) {
+			/*if (this->Lemmings[i]->getBoundingBox().getMinX() == this->Border->getBoundingBox().getMaxX()) {
+				log("collide if move -1");
+				this->Move = 1;
+			}*/
+				
 			if (i == 0) {
 				this->Lemmings[i]->runAction(moveBy);
 			}
 			else {
 				this->Lemmings[i]->runAction(moveBy->clone());
+
 			}
 
 		}
@@ -82,20 +97,38 @@ void GameLayer::update(float delta) {
 //Contact Function
 
 bool GameLayer::onContactBegin(cocos2d::PhysicsContact& contact) {
+
 	auto shapeA = contact.getShapeA()->getBody();
 	auto shapeB = contact.getShapeB()->getBody();
 
-	if ((shapeA->getCategoryBitmask() & shapeB->getCollisionBitmask()) == 0
-		|| (shapeB->getCategoryBitmask() & shapeA->getCollisionBitmask()) == 0)
-	{
-		// shapes can't collide
-		return false;
-	}
 
-	//bodies can collide
-	this->Move = -1;
-	log("%d", this->Move);
-	return true;
+	if (shapeA->getNode() && shapeB->getNode())
+	{
+
+		if (shapeA->getNode()->getTag() == 2) {
+			this->changeMoveDirection();
+			return true;
+		}
+		else if (shapeA->getNode()->getTag() == 2) {
+			this->changeMoveDirection();
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
+	
+}
+
+void GameLayer::changeMoveDirection() {
+	if (this->Move == 1) {
+		this->Move = -1;
+	}
+	else {
+		this->Move = 1;
+	}
 }
 
 
@@ -122,6 +155,8 @@ bool GameLayer::init()
 	{
 		return false;
 	}
+
+	this->Move = 1;
 	// Keyboard Listener
 	//auto listener = EventListenerKeyboard::create();
 	//listener->onKeyPressed = CC_CALLBACK_2(GameLayer::keyPressed, this);
@@ -142,13 +177,51 @@ bool GameLayer::init()
 
 
 	// Window Border 
-	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, material, 5);
-	auto edgeNode = Node::create();
-	edgeNode->setPosition(Point(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	edgeNode->setPhysicsBody(edgeBody);
-	this->addChild(edgeNode);
-	edgeNode->getPhysicsBody()->setCategoryBitmask(0x03);    // 0011
-	edgeNode->getPhysicsBody()->setCollisionBitmask(0x03);   // 0011
+	//auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, material, 5);
+	//auto edgeNode = Node::create();
+	//edgeNode->setPosition(Point(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	//edgeNode->setPhysicsBody(edgeBody);
+	//this->addChild(edgeNode);
+	//edgeNode->getPhysicsBody()->setCategoryBitmask(0x03);    // 0011
+	//edgeNode->getPhysicsBody()->setCollisionBitmask(0x03);   // 0011
+
+	//this->Border = edgeNode;
+
+	auto RightBorderBody = PhysicsBody::createEdgeBox(Size(5,visibleSize.height), material, 5);
+	auto RightBorderNode = Node::create();
+	RightBorderNode->setPosition(Point(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
+	RightBorderBody->setContactTestBitmask(0xFFFFFFFF);
+	RightBorderBody->setTag(2);
+	RightBorderNode->setPhysicsBody(RightBorderBody);
+	this->addChild(RightBorderNode);
+	
+	
+
+	auto GroundBorderBody = PhysicsBody::createEdgeBox(Size(visibleSize.width, 1), material, 5);
+	auto GroundBorderNode = Node::create();
+	GroundBorderNode->setPosition(Point(origin.x + visibleSize.width/2, origin.y ));
+	GroundBorderNode->setPhysicsBody(GroundBorderBody);
+	this->addChild(GroundBorderNode);
+	GroundBorderNode->getPhysicsBody()->setCategoryBitmask(0x03);    // 0011
+	GroundBorderNode->getPhysicsBody()->setCollisionBitmask(0x03);   // 0011
+
+	auto LeftBorderBody = PhysicsBody::createEdgeBox(Size(1, visibleSize.height), material, 5);
+	auto LeftBorderNode = Node::create();
+	LeftBorderNode->setPosition(Point(origin.x, origin.y + visibleSize.height / 2));
+	LeftBorderBody->setContactTestBitmask(0xFFFFFFFF);
+	LeftBorderBody->setTag(2);
+	LeftBorderNode->setPhysicsBody(LeftBorderBody);
+	this->addChild(LeftBorderNode);
+	LeftBorderNode->getPhysicsBody()->setCategoryBitmask(0x03);    // 0011
+	LeftBorderNode->getPhysicsBody()->setCollisionBitmask(0x03);   // 0011
+
+	//auto UpperBorderBody = PhysicsBody::createEdgeBox(Size(visibleSize.width, 1), material, 5);
+	//auto UpperBorderNode = Node::create();
+	//UpperBorderNode->setPosition(Point(origin.x + visibleSize.width / 2, origin.y + visibleSize.height));
+	//UpperBorderNode->setPhysicsBody(UpperBorderBody);
+	//this->addChild(UpperBorderNode);
+	//UpperBorderNode->getPhysicsBody()->setCategoryBitmask(0x03);    // 0011
+	//UpperBorderNode->getPhysicsBody()->setCollisionBitmask(0x03);   // 0011
 
 
 	/*auto label = MenuItemFont::create("Start Game", CC_CALLBACK_1(GameLayer::menuChange, this));
@@ -177,13 +250,10 @@ bool GameLayer::init()
 		auto physicsBody = PhysicsBody::createBox(Size(lemmings.Lemmings[i]->getContentSize().width, lemmings.Lemmings[i]->getContentSize().height), PhysicsMaterial(0.1f, 0.0f, 0.0f));
 		physicsBody->setDynamic(true);
 		lemmings.Lemmings[i]->addComponent(physicsBody);
-		this->addChild(lemmings.Lemmings[i], 0);
-		if (i == 1) {
-			lemmings.Lemmings[i]->getPhysicsBody()->setCategoryBitmask(0x02);    // 0010
-			lemmings.Lemmings[i]->getPhysicsBody()->setCollisionBitmask(0x02);   // 0001
-		}
-		lemmings.Lemmings[i]->getPhysicsBody()->setCategoryBitmask(0x02);    // 0010
-		lemmings.Lemmings[i]->getPhysicsBody()->setCollisionBitmask(0x01);   // 0001
+		this->addChild(lemmings.Lemmings[i], i);
+		lemmings.Lemmings[i]->setPosition(Vec2(visibleSize.width / 2 + origin.x+ (i*300), visibleSize.height / 2 + origin.y));
+		lemmings.Lemmings[i]->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
+		lemmings.Lemmings[i]->setTag(1);
 	}
 	Lemmings = lemmings.Lemmings;
 	this->scheduleUpdate();
