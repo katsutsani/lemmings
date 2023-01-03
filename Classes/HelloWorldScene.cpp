@@ -24,6 +24,7 @@
 
 #include "HelloWorldScene.h"
 #include "GameScene.h"
+#include "ui/CocosGUI.h"
 
 USING_NS_CC;
 
@@ -80,13 +81,62 @@ bool HelloWorld::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
+    ////////////////////////////////////////////////
+
+    auto Play = MenuItemImage::create(
+        "PlayRB.png",
+        "PlayActRB.png",
+        CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+
+    if (Play == nullptr ||
+        Play->getContentSize().width <= 0 ||
+        Play->getContentSize().height <= 0)
+    {
+        problemLoading("'CloseNormal.png' and 'CloseSelected.png'");
+    }
+    else
+    {
+        Play->setPosition(Vec2(origin.x + visibleSize.width / 2,
+                               origin.y + visibleSize.height - 100 - Play->getContentSize().height));
+    }
+
+    // create menu, it's an autorelease object
+    auto playDisplay = Menu::create(Play, NULL);
+    playDisplay->setPosition(Vec2::ZERO);
+
+    this->addChild(playDisplay, 1);
+
     /////////////////////////////
+    auto Quit = MenuItemImage::create(
+        "QuitGameRB.png",
+        "QuitGameActRB.png",
+        CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+
+        if (Quit == nullptr ||
+            Quit->getContentSize().width <= 0 ||
+            Quit->getContentSize().height <= 0)
+        {
+            problemLoading("'CloseNormal.png' and 'CloseSelected.png'");
+        }
+        else
+        {
+            Quit->setPosition(Vec2(origin.x + visibleSize.width / 2,
+                origin.y + visibleSize.height - 450 - Quit->getContentSize().height));
+        }
+
+        // create menu, it's an autorelease object
+        auto quitDisplay = Menu::create(Quit, NULL);
+        quitDisplay->setPosition(Vec2::ZERO);
+
+        this->addChild(quitDisplay, 1);
+
+        /////////////////////////////
     // 3. add your codes below...
 
     // add a label shows "Hello World"
     // create and initialize a label
 
-    auto label = Label::createWithTTF("Lemmings Game", "fonts/Marker Felt.ttf", 24);
+    auto label = Label::createWithTTF("Lemmings Game", "fonts/Marker Felt.ttf", 85);
     if (label == nullptr)
     {
         problemLoading("'fonts/Marker Felt.ttf'");
@@ -101,21 +151,23 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-    if (sprite == nullptr)
-    {
-        problemLoading("'HelloWorld.png'");
-    }
-    else
-    {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
-    }
-    return true;
+    // add "HelloWorld" splash screen"
+
+    //auto sprite = Sprite::create("HelloWorld.png");
+    //if (sprite == nullptr)
+    //{
+    //    problemLoading("'HelloWorld.png'");
+    //}
+    //else
+    //{
+    //    // position the sprite on the center of the screen
+    //    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+
+    //    // add the sprite as a child to this layer
+    //    this->addChild(sprite, 0);
+    //}
+    //return true;
 }
 
 
@@ -125,10 +177,10 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //Close the cocos2d-x game scene and quit the application
     Director::getInstance()->replaceScene(scene);
 
-    /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
+        /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
 
-    //EventCustom customEndEvent("game_scene_close_event");
-    //_eventDispatcher->dispatchEvent(&customEndEvent);
+        //EventCustom customEndEvent("game_scene_close_event");
+        //_eventDispatcher->dispatchEvent(&customEndEvent);
 
 
 }
