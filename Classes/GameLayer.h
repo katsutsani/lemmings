@@ -35,7 +35,7 @@ class GameLayer : public cocos2d::Layer
 {
 public:
     int Move;
-
+    int contact;
     virtual bool init() override;
     std::vector<cocos2d::Sprite*> Lemmings;
     void update(float) override;

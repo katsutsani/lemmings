@@ -34,7 +34,6 @@ class Entity : public cocos2d::Sprite, public cocos2d::Scene
 {
 public:
     std::vector<Sprite*> Lemmings;
-    Sprite* Sprite1;
 
     Entity(int);
     ~Entity();
