@@ -103,7 +103,15 @@ bool GameLayer::onContactBegin(cocos2d::PhysicsContact& contact) {
 	auto nodeB = contact.getShapeB()->getBody()->getNode();
 	if (nodeA && nodeB)
 	{
-		log("%d, %d",nodeA->getTag(), nodeB->getTag());
+		if (nodeA->getTag() == 3)
+		{
+			log("%d",nodeB->getTag());
+		}
+		else if (nodeB->getTag() == 3)
+		{
+			log("%d", nodeA->getTag());
+		}
+		
 	}
 	return false;
 }
@@ -173,11 +181,11 @@ bool GameLayer::init()
 	//this->Border = edgeNode;
 
 	auto RightBorderBody = PhysicsBody::createEdgeBox(Size(5, visibleSize.height), material, 5);
-	auto RightBorderNode = Sprite::create();
+	auto RightBorderNode = Node::create();
 	RightBorderNode->setPosition(Point(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
 	RightBorderNode->setPhysicsBody(RightBorderBody);
 	this->addChild(RightBorderNode, 0);
-	RightBorderBody->setTag(3);
+	RightBorderNode->setTag(3);
 	RightBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
 	
 
@@ -196,7 +204,7 @@ bool GameLayer::init()
 	LeftBorderNode->setPosition(Point(origin.x, origin.y + visibleSize.height / 2));
 	LeftBorderNode->setPhysicsBody(LeftBorderBody);
 	this->addChild(LeftBorderNode, 0);
-	LeftBorderBody->setTag(3);
+	LeftBorderNode->setTag(3);
 	LeftBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
 	
 
