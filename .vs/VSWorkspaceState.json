@@ -1,9 +1,15 @@
 {
+  "OutputFoldersPerTargetSystem": {
+    "Ordinateur local": [
+      "out\\build\\x64-Debug",
+      "out\\install\\x64-Debug"
+    ]
+  },
   "ExpandedNodes": [
     "",
     "\\Classes",
     "\\proj.win32"
   ],
-  "SelectedNode": "\\proj.win32\\lemmings.sln",
+  "SelectedNode": "\\Classes\\HelloWorldScene.cpp",
   "PreviewInSolutionExplorer": false
 }
