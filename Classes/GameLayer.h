@@ -34,20 +34,15 @@
 class GameLayer : public cocos2d::Layer
 {
 public:
-    int Move;
-    int contact;
     virtual bool init() override;
-    std::vector<cocos2d::Sprite*> Lemmings;
-    void update(float) override;
-    void keyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-    void keyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+    std::vector<Entity*> Lemmings;
+    void update(float);
+    float time;
 
     // implement the "static create()" method manually
     CREATE_FUNC(GameLayer);
-    void GameLayer::changeMoveDirection();
-    Node* Border;
-    Node* RightBorder;
-
+    void LemmingsSpawn();
+    int spawn = 0;
     void menuChange(cocos2d::Ref* pSender);
     bool onContactBegin(cocos2d::PhysicsContact& contact);
 };

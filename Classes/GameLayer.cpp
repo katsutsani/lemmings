@@ -32,162 +32,145 @@ USING_NS_CC;
 // Update Function
 
 void GameLayer::update(float delta) {
-	
-	if (this->Move == 1) {
-		auto moveBy = MoveBy::create(1, Vec2(1, 0));
-		for (int i = 0; i < this->Lemmings.size(); i++) {
-
-			if (i == 0) {
-				this->Lemmings[i]->setPosition(this->Lemmings[i]->getPositionX() - 1, this->Lemmings[i]->getPositionY());
-				this->Lemmings[i]->runAction(moveBy);
-
-			}
-			else {
-				this->Lemmings[i]->setPosition(this->Lemmings[i]->getPositionX() - 1, this->Lemmings[i]->getPositionY());
-				this->Lemmings[i]->runAction(moveBy->clone());
-
-			}
+	time -= delta;
+	if (time <= 0 && this->spawn < this->Lemmings.size()) {
+		time = 1.5f;
+		LemmingsSpawn();
+	}
+	for (int i = 0; i < this->Lemmings.size(); i++) {
+		if (this->Lemmings[i]->direction == 1 && this->Lemmings[i]->Spawned == true) {
+			auto moveBy = MoveBy::create(1, Vec2(2, 0));
+			this->Lemmings[i]->Lemmings->runAction(moveBy);
 
 		}
-	}
-	else if (this->Move == -1) {
-		auto moveBy = MoveBy::create(1, Vec2(-1, 0));
-		for (int i = 0; i < this->Lemmings.size(); i++) {
-
-			if (i == 0) {
-				this->Lemmings[i]->setPosition(this->Lemmings[i]->getPositionX() + 1, this->Lemmings[i]->getPositionY());
-				this->Lemmings[i]->runAction(moveBy);
-			}
-			else {
-				this->Lemmings[i]->setPosition(this->Lemmings[i]->getPositionX() + 1, this->Lemmings[i]->getPositionY());
-				this->Lemmings[i]->runAction(moveBy->clone());
-
-			}
-
+		else if (this->Lemmings[i]->direction == -1 && this->Lemmings[i]->Spawned == true) {
+			auto moveBy = MoveBy::create(1, Vec2(-2, 0));
+			this->Lemmings[i]->Lemmings->runAction(moveBy);
 		}
 	}
-
 }
 
-//Contact Function
+	//Contact Function
 
-bool GameLayer::onContactBegin(cocos2d::PhysicsContact& contact) {
+	bool GameLayer::onContactBegin(cocos2d::PhysicsContact & contact) {
 
-	auto nodeA = contact.getShapeA()->getBody()->getNode();
-	auto nodeB = contact.getShapeB()->getBody()->getNode();
-	if (nodeA && nodeB)
-	{
-		if (nodeB->getTag() == -1 && nodeA->getTag() == 3 && this->contact == 0)
+		auto nodeA = contact.getShapeA()->getBody()->getNode();
+		auto nodeB = contact.getShapeB()->getBody()->getNode();
+		if (nodeA && nodeB)
 		{
-			this->contact = 1;
-			this->changeMoveDirection();
-			return true;
+			if (nodeB->getTag() <= 0 && nodeA->getTag() == 3)
+			{
+				for (int i = 0; i < this->Lemmings.size(); i++) {
+					if (this->Lemmings[i]->Lemmings->getTag() == nodeB->getTag()) {
+						this->Lemmings[i]->OnContact();
+						break;
+					}
+				}
+
+				return true;
+			}
+
 		}
-		
-	}
-	return false;
-}
-
-
-
-void GameLayer::changeMoveDirection() {
-	if (this->Move == 1) {
-		this->Move = -1;
-		this->contact = 0;
-	}
-	else {
-		this->Move = 1;
-		this->contact = 0;
-	}
-}
-
-// Print useful error message instead of segfaulting when files are not there.
-static void problemLoading(const char* filename)
-{
-	printf("Error while loading: %s\n", filename);
-	printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
-}
-// on "init" you need to initialize your instance
-
-bool GameLayer::init()
-{
-	//////////////////////////////
-	// 1. super init first
-	if (!Layer::init())
-	{
 		return false;
 	}
 
-	this->Move = -1;
-
-	auto visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	PhysicsMaterial material(1.0f, 0.0f, 0.0f);
-
-	// Window Border 
-
-	auto RightBorderBody = PhysicsBody::createEdgeBox(Size(1, visibleSize.height), material, 5);
-	auto RightBorderNode = Node::create();
-	RightBorderNode->setPosition(Point(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
-	RightBorderNode->setPhysicsBody(RightBorderBody);
-	this->addChild(RightBorderNode, 0);
-	RightBorderNode->setTag(3);
-	RightBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
-
-
-	auto GroundBorderBody = PhysicsBody::createEdgeBox(Size(visibleSize.width, 1), material, 5);
-	auto GroundBorderNode = Node::create();
-	GroundBorderNode->setPosition(Point(origin.x + visibleSize.width / 2, origin.y));
-	GroundBorderNode->setPhysicsBody(GroundBorderBody);
-	this->addChild(GroundBorderNode);
-	GroundBorderNode->getPhysicsBody()->setCategoryBitmask(0x03);    // 0011
-	GroundBorderNode->getPhysicsBody()->setCollisionBitmask(0x03);   // 0011
-
-	auto LeftBorderBody = PhysicsBody::createEdgeBox(Size(1, visibleSize.height), material, 5);
-	auto LeftBorderNode = Node::create();
-	LeftBorderNode->setPosition(Point(origin.x, origin.y + visibleSize.height / 2));
-	LeftBorderNode->setPhysicsBody(LeftBorderBody);
-	this->addChild(LeftBorderNode, 0);
-	LeftBorderNode->setTag(3);
-	LeftBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
-
-	auto s_centre = Vec2(visibleSize.width / 2, visibleSize.height / 2);
-
-
-	// Lemmings and their Physics Body
-
-	Entity lemmings(2);
-	for (auto i = 0; i < lemmings.Lemmings.size(); i++) {
-		auto physicsBody = PhysicsBody::createBox(Size(lemmings.Lemmings[i]->getContentSize().width, lemmings.Lemmings[i]->getContentSize().height), PhysicsMaterial(0.1f, 0.0f, 0.0f));
-		physicsBody->setDynamic(true);
-		lemmings.Lemmings[i]->addComponent(physicsBody);
-		this->addChild(lemmings.Lemmings[i], 0);
-		lemmings.Lemmings[i]->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
-		lemmings.Lemmings[i]->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2 + Director::getInstance()->getVisibleOrigin().x + (i * 300), Director::getInstance()->getVisibleSize().height / 2 + Director::getInstance()->getVisibleOrigin().y));
+	// Print useful error message instead of segfaulting when files are not there.
+	static void problemLoading(const char* filename)
+	{
+		printf("Error while loading: %s\n", filename);
+		printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 	}
-	Lemmings = lemmings.Lemmings;
+	// on "init" you need to initialize your instance
 
-	// Contact Listener
-	auto contactListener = EventListenerPhysicsContact::create();
-	contactListener->onContactBegin = CC_CALLBACK_1(GameLayer::onContactBegin, this);
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
+	bool GameLayer::init()
+	{
+		time = 2.0f;
+		//////////////////////////////
+		// 1. super init first
+		if (!Layer::init())
+		{
+			return false;
+		}
 
-	this->scheduleUpdate();
+		auto visibleSize = Director::getInstance()->getVisibleSize();
+		Vec2 origin = Director::getInstance()->getVisibleOrigin();
+		PhysicsMaterial material(1.0f, 0.0f, 0.0f);
 
-	return true;
-}
+		// Window Border 
 
-
-void GameLayer::menuChange(Ref* pSender)
-{
-	//Change the cocos2d-x game scene
-	auto scene = HelloWorld::createScene();
-	Director::getInstance()->replaceScene(scene);
-
-	/*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
-
-	//EventCustom customEndEvent("game_scene_close_event");
-	//_eventDispatcher->dispatchEvent(&customEndEvent);
+		auto RightBorderBody = PhysicsBody::createEdgeBox(Size(1, visibleSize.height), material, 5);
+		auto RightBorderNode = Node::create();
+		RightBorderNode->setPosition(Point(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
+		RightBorderNode->setPhysicsBody(RightBorderBody);
+		this->addChild(RightBorderNode, 0);
+		RightBorderNode->setTag(3);
+		RightBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
 
 
-}
+		auto GroundBorderBody = PhysicsBody::createEdgeBox(Size(visibleSize.width, 1), material, 5);
+		auto GroundBorderNode = Node::create();
+		GroundBorderNode->setPosition(Point(origin.x + visibleSize.width / 2, origin.y));
+		GroundBorderNode->setPhysicsBody(GroundBorderBody);
+		this->addChild(GroundBorderNode);
+		GroundBorderNode->getPhysicsBody()->setCategoryBitmask(0x03);    // 0011
+		GroundBorderNode->getPhysicsBody()->setCollisionBitmask(0x03);   // 0011
+
+		auto LeftBorderBody = PhysicsBody::createEdgeBox(Size(1, visibleSize.height), material, 5);
+		auto LeftBorderNode = Node::create();
+		LeftBorderNode->setPosition(Point(origin.x, origin.y + visibleSize.height / 2));
+		LeftBorderNode->setPhysicsBody(LeftBorderBody);
+		this->addChild(LeftBorderNode, 0);
+		LeftBorderNode->setTag(3);
+		LeftBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
+
+		auto s_centre = Vec2(visibleSize.width / 2, visibleSize.height / 2);
+
+
+		// Lemmings and their Physics Body
+
+		for (auto i = 0; i < 2; i++) {
+			this->Lemmings.push_back(new Entity);
+		}
+		for (auto i = 0; i < Lemmings.size(); i++) {
+			auto physicsBody = PhysicsBody::createBox(Size(this->Lemmings[i]->Lemmings->getContentSize().width, this->Lemmings[i]->Lemmings->getContentSize().height), PhysicsMaterial(0.1f, 0.0f, 0.0f));
+			physicsBody->setDynamic(false);
+			this->Lemmings[i]->Lemmings->addComponent(physicsBody);
+			this->Lemmings[i]->Lemmings->setTag(-i);
+			this->Lemmings[i]->Lemmings->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
+			this->Lemmings[i]->Lemmings->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2 + Director::getInstance()->getVisibleOrigin().x, Director::getInstance()->getVisibleSize().height / 2 + Director::getInstance()->getVisibleOrigin().y));
+			this->Lemmings[i]->Lemmings->setOpacity(0);
+			this->addChild(this->Lemmings[i]->Lemmings, 1);
+		}
+
+		// Contact Listener
+		LemmingsSpawn();
+		auto contactListener = EventListenerPhysicsContact::create();
+		contactListener->onContactBegin = CC_CALLBACK_1(GameLayer::onContactBegin, this);
+		_eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
+		this->scheduleUpdate();
+		return true;
+	}
+
+	void GameLayer::LemmingsSpawn()
+	{
+		if (this->spawn < this->Lemmings.size() && this->Lemmings[this->spawn]->Spawned == false) {
+			this->Lemmings[this->spawn]->Spawned = true;
+			this->Lemmings[this->spawn]->Lemmings->getPhysicsBody()->setDynamic(true);
+			this->Lemmings[this->spawn]->Lemmings->setOpacity(255);
+			this->spawn = this->spawn + 1;
+		}
+	}
+
+	void GameLayer::menuChange(Ref * pSender)
+	{
+		//Change the cocos2d-x game scene
+		auto scene = HelloWorld::createScene();
+		Director::getInstance()->replaceScene(scene);
+
+		/*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
+
+		//EventCustom customEndEvent("game_scene_close_event");
+		//_eventDispatcher->dispatchEvent(&customEndEvent);
+
+
+	}
