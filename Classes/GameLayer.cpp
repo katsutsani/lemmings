@@ -39,8 +39,8 @@ void GameLayer::update(float delta) {
 	}
 	for (int i = 0; i < this->Lemmings.size(); i++) {
 		if (this->Lemmings[i]->direction == 1) {
-			auto moveBy = MoveBy::create(1,Vec2(2.5, 0));
-			if(i != 0)
+			auto moveBy = MoveBy::create(1, Vec2(2.5, 0));
+			if (i != 0)
 				this->Lemmings[i]->Lemmings->runAction(moveBy->clone());
 			else
 				this->Lemmings[i]->Lemmings->runAction(moveBy);
