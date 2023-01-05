@@ -33,10 +33,14 @@
 class Entity : public cocos2d::Sprite, public cocos2d::Scene
 {
 public:
-    std::vector<Sprite*> Lemmings;
-    Sprite* Sprite1;
+    Sprite* Lemmings;
+    int direction;
+    int contact;
+    float Spawned;
+    void changeDirection();
+    void OnContact();
 
-    Entity(int);
+    Entity();
     ~Entity();
 
 };

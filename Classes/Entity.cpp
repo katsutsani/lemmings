@@ -1,18 +1,32 @@
 #include "Entity.h"
 USING_NS_CC;
-Entity::Entity(int NbOfEntity) {
-	auto visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	for (int i = 0; i < NbOfEntity; i++) {
-
-		Lemmings.push_back(Sprite::create("HelloWorld.png"));
-
-		
+void Entity::changeDirection()
+{
+	if (this->direction == 1) {
+		this->direction = -1;
 	}
-	
+	else if (this->direction == -1) {
+		this->direction = 1;
+	}
+}
+void Entity::OnContact()
+{
+	if (this->contact == 0){
+		this->contact = 1;
+		this->changeDirection();
+	}
+	else if (this->contact == 1) {
+		this->contact = 0;
+	}
+
+}
+Entity::Entity() {
+	this->Spawned = false;
+	this->Lemmings = Sprite::create("HelloWorld.png");
+	this->contact = 0;
+	this->direction = 1;
 }
 
-Entity::~Entity(){
+Entity::~Entity() {
 
 }
