@@ -1,0 +1,65 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "C:/Users/valtmann/Documents/projet/lemmings/Resources/fonts/map.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "#a": {
+            "scaleInEditor": 1
+        },
+        "#penis": {
+            "scaleInEditor": 1
+        },
+        "C:/Users/valtmann/Documents/projet/lemmings/Resources/fonts/map.tmx": {
+            "scale": 0.5205208333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 960.5763458074845,
+                "y": 512.9477686611966
+            }
+        },
+        "C:/Users/valtmann/Documents/projet/lemmings/Resources/fonts/map.tmx#k,": {
+            "scaleInDock": 1
+        },
+        "map.tmx": {
+            "scale": 0.2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 960,
+                "y": 512.5
+            }
+        },
+        "map.tmx#k,": {
+            "scaleInDock": 0.5
+        }
+    },
+    "last.exportedFilePath": "X:/lemmings/Resources/fonts",
+    "last.imagePath": "C:/Users/valtmann/Downloads",
+    "map.height": 16,
+    "map.lastUsedExportFilter": "Fichiers de carte Tiled (*.tmx *.xml)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "openFiles": [
+        "map.tmx",
+        "C:/Users/valtmann/Documents/projet/lemmings/Resources/fonts/map.tmx"
+    ],
+    "project": "map.tiled-project",
+    "recentFiles": [
+        "map.tmx",
+        "C:/Users/valtmann/Documents/projet/lemmings/Resources/fonts/map.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    }
+}

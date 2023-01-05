@@ -151,7 +151,8 @@ bool GameLayer::init()
 	{
 		return false;
 	}
-
+	auto map = TMXTiledMap::create("fonts/map.tmx");
+	this->addChild(map);
 	this->Move = 1;
 	// Keyboard Listener
 	//auto listener = EventListenerKeyboard::create();

@@ -97,4 +97,9 @@
       <Filter>Resources</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\fonts\map.tmx">
+      <Filter>Resources\fonts</Filter>
+    </None>
+  </ItemGroup>
 </Project>
