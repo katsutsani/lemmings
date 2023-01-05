@@ -896,9 +896,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <Image Include="..\Resources\test.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Resources\fonts\map.tmx" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

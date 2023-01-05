@@ -263,7 +263,7 @@ bool HelloWorld::init()
 
             // add the sprite as a child to this layer
             this->addChild(bg, 0);
-            bg->setScale(0.6);
+            bg->setScale(1);
         }
 
         /// ///////////////////////////////////////////// LEMMINGS TEXT
@@ -284,30 +284,6 @@ bool HelloWorld::init()
             this->addChild(Text, 0);
             Text->setScale(1);
         }
-
-
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-
-
-    // add "HelloWorld" splash screen"
-
-    //auto sprite = Sprite::create("HelloWorld.png");
-    //if (sprite == nullptr)
-    //{
-    //    problemLoading("'HelloWorld.png'");
-    //}
-    //else
-    //{
-    //    // position the sprite on the center of the screen
-    //    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    //    // add the sprite as a child to this layer
-    //    this->addChild(sprite, 0);
-    //}
-    //return true;
 }
 
 
