@@ -79,6 +79,8 @@ bool GameLayer::onContactBegin(cocos2d::PhysicsContact& contact) {
 	return false;
 }
 
+
+
 // Print useful error message instead of segfaulting when files are not there.
 static void problemLoading(const char* filename)
 {
@@ -150,6 +152,19 @@ bool GameLayer::init()
 	auto contactListener = EventListenerPhysicsContact::create();
 	contactListener->onContactBegin = CC_CALLBACK_1(GameLayer::onContactBegin, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
+
+	auto eventListener = EventListenerKeyboard::create();
+	eventListener->onKeyPressed = [](EventKeyboard::KeyCode keyCode, Event* event) {
+		Vec2 loc = event->getCurrentTarget()->getPosition();
+		switch (keyCode) {
+		case EventKeyboard::KeyCode::KEY_A:
+			this->scheduleUpdate();
+			break;
+		default:
+			break;
+		}
+	};
+
 	this->scheduleUpdate();
 	return true;
 }
@@ -176,6 +191,11 @@ void GameLayer::LemmingsSpawn()
 		this->spawn = this->spawn + 1;
 	}*/
 }
+
+void PauseMenu()
+{
+	
+};
 
 void GameLayer::menuChange(Ref* pSender)
 {

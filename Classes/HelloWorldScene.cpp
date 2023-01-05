@@ -50,7 +50,43 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-  
+    /// ///////////////////////////////////////////// BACKGROUND MENU
+
+    auto bg = Sprite::create("Lemmings.png");
+
+    if (bg == nullptr)
+    {
+        problemLoading("Lemmings.png");
+    }
+    else
+    {
+        // position the sprite on the center of the screen
+        bg->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+
+        // add the sprite as a child to this layer
+        this->addChild(bg, 0);
+        bg->setScale(1);
+    }
+
+    /// ///////////////////////////////////////////// LEMMINGS TEXT
+
+
+    auto Text = Sprite::create("LemmingsText.png");
+
+    if (Text == nullptr)
+    {
+        problemLoading("LemmingsText.png");
+    }
+    else
+    {
+        // position the sprite on the center of the screen
+        Text->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 1 - 100 + origin.y));
+
+        // add the sprite as a child to this layer
+        this->addChild(Text, 0);
+        Text->setScale(1);
+    }
+
 
     //////////////////////////////////////////////// START GAME BUTTON
 
@@ -77,10 +113,11 @@ bool HelloWorld::init()
 
     this->addChild(playDisplay, 1);
 
-    ///////////////////////////// QUIT GAME BUTTON
+    ////////////////////////////////////////////// QUIT GAME BUTTON
 
     auto Quit = MenuItemImage::create(
         "QuitGameRB.png",
+        "QuitGameActRB.png",
         "QuitGameActRB.png",
         CC_CALLBACK_1(HelloWorld::menuCloseApp, this));
 
@@ -248,42 +285,6 @@ bool HelloWorld::init()
 
         //this->addChild(skillbarDisplayBig, 1);
 
-        /// ///////////////////////////////////////////// BACKGROUND MENU
-
-        auto bg = Sprite::create("Lemmings.png");
-
-        if (bg == nullptr)
-        {
-            problemLoading("Lemmings.png");
-        }
-        else
-        {
-            // position the sprite on the center of the screen
-            bg->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-
-            // add the sprite as a child to this layer
-            this->addChild(bg, 0);
-            bg->setScale(1);
-        }
-
-        /// ///////////////////////////////////////////// LEMMINGS TEXT
-
-
-        auto Text = Sprite::create("LemmingsText.png");
-
-        if (Text == nullptr)
-        {
-            problemLoading("LemmingsText.png");
-        }
-        else
-        {
-            // position the sprite on the center of the screen
-            Text->setPosition(Vec2(visibleSize.width / 2  + origin.x, visibleSize.height / 1 - 100 + origin.y));
-
-            // add the sprite as a child to this layer
-            this->addChild(Text, 0);
-            Text->setScale(1);
-        }
 }
 
 
