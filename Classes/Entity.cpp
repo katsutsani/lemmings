@@ -4,9 +4,11 @@ void Entity::changeDirection()
 {
 	if (this->direction == 1) {
 		this->direction = -1;
+		this->Lemmings->setFlippedX(true);
 	}
 	else if (this->direction == -1) {
 		this->direction = 1;
+		this->Lemmings->setFlippedX(false);
 	}
 }
 void Entity::OnContact()
