@@ -77,9 +77,6 @@ void GameLayer::update(float delta) {
 	bool GameLayer::init()
 	{
 
-		auto map = TMXTiledMap::create("fonts/map.tmx");
-		this->addChild(map);
-
 		time = 2.0f;
 		//////////////////////////////
 		// 1. super init first
@@ -87,6 +84,9 @@ void GameLayer::update(float delta) {
 		{
 			return false;
 		}
+
+		auto map = TMXTiledMap::create("fonts/map.tmx");
+		this->addChild(map);
 
 		auto visibleSize = Director::getInstance()->getVisibleSize();
 		Vec2 origin = Director::getInstance()->getVisibleOrigin();
