@@ -35,7 +35,7 @@ Scene* GameScene::createScene()
 	scene->getPhysicsWorld()->setGravity(Vec2(0, -900));
 
 	// optional: set debug draw
-	/*scene->getPhysicsWorld()->setDebugDrawMask(0xffff);*/
+	scene->getPhysicsWorld()->setDebugDrawMask(0xffff);
 
 	auto layer = GameLayer::create();
 	scene->addChild(layer,0);

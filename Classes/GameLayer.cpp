@@ -39,14 +39,14 @@ void GameLayer::update(float delta) {
 	}
 	for (int i = 0; i < this->Lemmings.size(); i++) {
 		if (this->Lemmings[i]->direction == 1) {
-			auto moveBy = MoveBy::create(1, Vec2(4, 0));
+			auto moveBy = MoveBy::create(1,Vec2(2.5, 0));
 			if(i != 0)
 				this->Lemmings[i]->Lemmings->runAction(moveBy->clone());
 			else
 				this->Lemmings[i]->Lemmings->runAction(moveBy);
 		}
 		else if (this->Lemmings[i]->direction == -1) {
-			auto moveBy = MoveBy::create(1, Vec2(-4, 0));
+			auto moveBy = MoveBy::create(0.1, Vec2(-2.5, 0));
 			if (i != 0)
 				this->Lemmings[i]->Lemmings->runAction(moveBy->clone());
 			else
@@ -67,10 +67,7 @@ bool GameLayer::onContactBegin(cocos2d::PhysicsContact& contact) {
 		{
 			for (int i = 0; i < this->Lemmings.size(); i++) {
 				if (this->Lemmings[i]->Lemmings->getTag() == nodeB->getTag()) {
-					auto rotateTo = RotateTo::create(1.0f, 90.0f);
-					this->Lemmings[i]->Lemmings->runAction(rotateTo);
 					this->Lemmings[i]->OnContact();
-					
 					break;
 				}
 			}
@@ -113,7 +110,7 @@ bool GameLayer::init()
 	auto RightBorderNode = Node::create();
 	RightBorderNode->setPosition(Point(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
 	RightBorderNode->setPhysicsBody(RightBorderBody);
-	this->addChild(RightBorderNode, 0);
+	this->addChild(RightBorderNode, 1);
 	RightBorderNode->setTag(3);
 	RightBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
 
@@ -130,7 +127,7 @@ bool GameLayer::init()
 	auto LeftBorderNode = Node::create();
 	LeftBorderNode->setPosition(Point(origin.x, origin.y + visibleSize.height / 2));
 	LeftBorderNode->setPhysicsBody(LeftBorderBody);
-	this->addChild(LeftBorderNode, 0);
+	this->addChild(LeftBorderNode, 1);
 	LeftBorderNode->setTag(3);
 	LeftBorderNode->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
 
@@ -145,6 +142,7 @@ bool GameLayer::init()
 	this->Lemmings[spawn]->Lemmings->addComponent(physicsBody);
 	this->Lemmings[spawn]->Lemmings->setTag(-spawn);
 	this->Lemmings[spawn]->Lemmings->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
+	this->Lemmings[spawn]->Lemmings->setScale(0.5f);
 	this->Lemmings[spawn]->Lemmings->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2 + Director::getInstance()->getVisibleOrigin().x, Director::getInstance()->getVisibleSize().height / 2 + Director::getInstance()->getVisibleOrigin().y));
 	this->addChild(this->Lemmings[spawn]->Lemmings, 1);
 	spawn++;
@@ -165,6 +163,7 @@ void GameLayer::LemmingsSpawn()
 		this->Lemmings[spawn]->Lemmings->addComponent(physicsBody);
 		this->Lemmings[spawn]->Lemmings->setTag(-spawn);
 		this->Lemmings[spawn]->Lemmings->getPhysicsBody()->setContactTestBitmask(0xFFFFFFFF);
+		this->Lemmings[spawn]->Lemmings->setScale(0.5f);
 		this->Lemmings[spawn]->Lemmings->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2 + Director::getInstance()->getVisibleOrigin().x, Director::getInstance()->getVisibleSize().height / 2 + Director::getInstance()->getVisibleOrigin().y));
 		this->addChild(this->Lemmings[spawn]->Lemmings, 1);
 	}
