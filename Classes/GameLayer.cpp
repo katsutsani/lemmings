@@ -153,7 +153,7 @@ bool GameLayer::init()
 	contactListener->onContactBegin = CC_CALLBACK_1(GameLayer::onContactBegin, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
 
-	auto eventListener = EventListenerKeyboard::create();
+	/*auto eventListener = EventListenerKeyboard::create();
 	eventListener->onKeyPressed = [](EventKeyboard::KeyCode keyCode, Event* event) {
 		Vec2 loc = event->getCurrentTarget()->getPosition();
 		switch (keyCode) {
@@ -163,7 +163,7 @@ bool GameLayer::init()
 		default:
 			break;
 		}
-	};
+	};*/
 
 	this->scheduleUpdate();
 	return true;
