@@ -36,7 +36,6 @@ public:
     Sprite* Lemmings;
     int direction;
     int contact;
-    float Spawned;
     void changeDirection();
     void OnContact();
 

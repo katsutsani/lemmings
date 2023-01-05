@@ -21,8 +21,7 @@ void Entity::OnContact()
 
 }
 Entity::Entity() {
-	this->Spawned = false;
-	this->Lemmings = Sprite::create("HelloWorld.png");
+	this->Lemmings = Sprite::create("lemmings1.png");
 	this->contact = 0;
 	this->direction = 1;
 }
