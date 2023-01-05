@@ -100,6 +100,9 @@ bool GameLayer::init()
 		return false;
 	}
 
+	auto map = TMXTiledMap::create("fonts/map.tmx");
+	this->addChild(map);
+
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	PhysicsMaterial material(1.0f, 0.0f, 0.0f);

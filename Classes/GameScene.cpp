@@ -29,16 +29,17 @@
 USING_NS_CC;
 Scene* GameScene::createScene()
 {
-	//// create the scene with physics enabled
+	// create the scene with physics enabled
 	auto scene = GameScene::createWithPhysics();
 	//// set gravity
 	scene->getPhysicsWorld()->setGravity(Vec2(0, -900));
 
-	//// optional: set debug draw
+	// optional: set debug draw
 	/*scene->getPhysicsWorld()->setDebugDrawMask(0xffff);*/
 
 	auto layer = GameLayer::create();
-	scene->addChild(layer);
+	scene->addChild(layer,0);
+	
 
 	return scene;
 }
